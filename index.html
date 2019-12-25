@@ -1,0 +1,97 @@
+ma.html
+朱
+類型
+HTML
+大小
+2 KB (2,138 個位元組)
+儲存空間使用量
+2 KB (2,138 個位元組)
+位置
+切版
+擁有者
+我
+上次修改時間
+：
+我在 2019年10月29日修改過
+上次開啟時間
+：
+我在 上午10:09開啟過
+建立日期：
+2019年10月29日 (使用 Google Drive Web建立)
+新增說明
+檢視者可以下載
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+    #start{
+        display:none;
+    }
+    #start.look{
+        display:block;
+    }
+    </style>
+</head>
+
+<body>
+    <p id="info"> 0 ~ 100 round:0</p>
+
+    <input type="number"  id="user_number" min="1" max="100">
+    <button id="btn">送出</button>
+    <button id="start">重新</button>
+
+    <script>
+        var ansewr = Math.floor(Math.random() * 101) ;
+        console.log(ansewr);
+        var btn = document.querySelector("#btn");
+        var user_guess_number;
+        var round = 1;
+        var maxnum = 100;
+        var minnum = 0;
+        var info = document.querySelector("#info");
+        var start = document.querySelector("#start");
+        btn.onclick = function() {
+
+            user_guess_number= parseInt(document.querySelector("#user_number").value);
+            if (user_guess_number == ansewr) {
+                console.log("猜對");
+                info.textContent = `答對 ,round:${round} `
+                start.classList.add('look');
+
+            }
+            else if(user_guess_number > ansewr){
+           console.log("太大");
+
+            maxnum = user_guess_number;
+           info.textContent = `猜錯 ,${minnum} ~${maxnum} `;
+           round++;
+            }
+            else{
+              console.log("太小");
+              minnum = user_guess_number;
+              info.textContent = `猜錯 ,${minnum} ~${maxnum} `;
+              round++;
+            }   
+        }   
+        start.onclick = function(){
+            ansewr = Math.floor(Math.random() * 101) ;
+            console.log("新的",ansewr);
+            round = 1;
+            maxnum = 100;
+            minnum = 0;
+            info.textContent = "0 ~ 100 round:0";
+            document.querySelector("#user_number").value = '';
+            start.classList.remove("look");
+        }
+
+
+    </script>
+</body>
+
+</html>
