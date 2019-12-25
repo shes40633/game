@@ -15,6 +15,12 @@
     #start.look{
         display:block;
     }
+    .img{
+        opacity: 0;
+    }
+    .show{
+      opacity: 1;
+    }
     </style>
 </head>
 
@@ -24,6 +30,9 @@
     <input type="number"  id="user_number" min="1" max="100">
     <button id="btn">送出</button>
     <button id="start">重新</button>
+    <div class="img">
+        <img src="./img/下載.jpg" alt="">
+    </div>
 
     <script>
         var ansewr = Math.floor(Math.random() * 101) ;
@@ -35,6 +44,7 @@
         var minnum = 0;
         var info = document.querySelector("#info");
         var start = document.querySelector("#start");
+        var img = document.querySelector(".img");
         btn.onclick = function() {
 
             user_guess_number= parseInt(document.querySelector("#user_number").value);
@@ -42,6 +52,7 @@
                 console.log("猜對");
                 info.textContent = `答對 ,round:${round} `
                 start.classList.add('look');
+                img.classList.add("show");
 
             }
             else if(user_guess_number > ansewr){
@@ -67,6 +78,7 @@
             info.textContent = "0 ~ 100 round:0";
             document.querySelector("#user_number").value = '';
             start.classList.remove("look");
+            img.classList.remove("show");
         }
 
 
